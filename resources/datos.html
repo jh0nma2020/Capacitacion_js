@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+
+<html class="no-js ui-mobile-rendering" lang="es">
+	<head>
+		<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1" />
+    <title>Taller de Programacion</title>
+    <link rel="stylesheet" crossorigin="" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="Shortcut Icon" href="images/armada.ico"/>
+    <link href="css/style.css" rel="stylesheet">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1" />		
+
+	</head>
+	   <!--<p id="name_organization" ></p>-->
+	<body>
+		<header>
+			<img class="header-img" src ="images/banner.png" alt="JINA"/>
+        <div class="MainTitle"><h1 id="Title">Listado Informacion Unidades</h1></div>	
+		</header>
+		<div id="contenedor">
+			<nav>
+				 <ul>
+					 <li><a href="geomap">Volver al Mapa</a> </li>
+				</ul>
+			</nav>
+		</div>
+	    <!--<label>No. de Filas &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" id="Field1" value="4"> <br><br>
+		<label>No. de Columnas    </label><input type="text" id="Field2" value="2"><br><br>-->
+		<button type="button" id="botonClick" >Visualizacion Detalles Unidades ARC</button><br></br>
+		<!--<p id="res" ></p>-->
+		<div class="header_fijo">
+		<table class="tabla_resultados">
+			<thead>
+			  <tr>
+				<th> NOMBRE UNIDAD ARC </th>
+				<th> NOMBRE GESTOR </th>
+				<th> EMAIL GESTOR </th>
+				<th> DIRECCION UNIDAD </th>
+				<th> CIUDAD </th>
+				<th> DEPARTAMENTO </th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<th><div id="res"></div> </th>
+				<th><div id="res2"></div> </th>
+				<th><div id="res3"></div> </th>
+				<th><div id="res4"></div> </th>
+				<th><div id="res5"></div> </th>
+				<th><div id="res6"></div> </th>
+			  </tr>
+			</tbody>
+		</table>
+	
+	
+	</body>
+
+		<script>
+			//document.getElementById("name_organization").innerHTML= "IVAN NOVA";
+			
+			var boton = document.getElementById('botonClick');
+		boton.addEventListener('click', function(){
+			var url_service = "https://www.datos.gov.co/resource/nav4-rbv7.json";
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET",url_service);
+			xhr.send();
+			//console.log(xhr);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					var json = this.responseText;
+					var obj = JSON.parse(json);
+					var respuesta = "";
+					var respuesta2 = "";
+					var respuesta3 = "";
+					var respuesta4 = "";
+					var respuesta5 = "";
+					var respuesta6 = "";
+					//console.log(obj);
+					for(var i in obj) { 
+						//console.log(i);
+						respuesta = respuesta+obj[i].nombre_unidad_armda_nacional+"<br>";
+						//console.log(respuesta);
+						respuesta2 = respuesta2+obj[i].nombre_gestor+"<br>";
+						respuesta3 = respuesta3+obj[i].email_gestor+"<br>";
+						respuesta4 = respuesta4+obj[i].direccion_unidad+"<br>";
+						respuesta5 = respuesta5+obj[i].ciudad+"<br>";
+						respuesta6 = respuesta6+obj[i].departamento+"<br>";
+					}
+					document.getElementById("res").innerHTML = respuesta;
+					document.getElementById("res2").innerHTML = respuesta2;
+					document.getElementById("res3").innerHTML = respuesta3;
+					document.getElementById("res4").innerHTML = respuesta4;
+					document.getElementById("res5").innerHTML = respuesta5;
+					document.getElementById("res6").innerHTML = respuesta6;
+				}
+				else
+					console.log(fallo);
+			}			
+		});	
+			
+		</script>
+</html>
+

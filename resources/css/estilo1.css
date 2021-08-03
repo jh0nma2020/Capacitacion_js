@@ -1,0 +1,54 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: rgb(230, 230, 252);
+    color: black;
+    text-align: center;
+    outline: 10px solid black;
+}
+
+header {
+	.header-img {
+				height: 100%;
+				width: 100%;}
+}
+header {
+    color: black;
+    background: rgb(5, 5, 141);
+    width: 100%;
+    outline: 2px solid black;
+}
+
+table {
+	padding: 0;
+	width: 100%;
+	line-height: 150%;
+	background: rgb(146, 146, 245);
+}
+
+th, td {
+	text-align:left;
+	vertical-align:top;
+}
+
+.button {
+	color: blue
+    background: rgb(146, 146, 245);
+}
+h1{
+    color: rgb(5, 5, 141); ;
+	margin: 20px auto;
+}
+
+h2{
+    color: yellow;
+    text-decoration: none;
+	margin: 20px auto;
+}
+
+			
+
+				
+	
